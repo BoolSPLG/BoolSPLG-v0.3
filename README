@@ -4,7 +4,8 @@ Current release: v0.3
 
 What is BoolSPLG?
 
-BoolSPLG (Boolean functions and S-box Parallel Library for GPU) provides, reusable software components for every layer of the CUDA programming model. BoolSPLG is a library consisting procedures for analysis and compute cryptographic properties of Boolean and Vector Boolean function (S-box).
+BoolSPLG (Boolean functions and S-box Parallel Library for GPU) provides, reusable software components for every layer of the CUDA programming model. 
+BoolSPLG is a library consisting procedures for analysis and compute cryptographic properties of Boolean and Vector Boolean function (S-box).
 
 How do I get started using BoolSPLG?
 
