@@ -37,8 +37,8 @@ location of the BoolSPLG header library.
 
 Examples
 
-BoolSPLG distribution directory contain “examples” directory with examples (Boolean and S-box) programs. For the examples to work there is need to 
-include (add) the additional header files from the directory “help and additional header files”. This additional header files contain CPU Boolean and 
-S-box function used for comparison and checking the obtained results from GPU functions.
+BoolSPLG distribution directory contain “examples” directory with examples (Boolean and S-box) programs. For the examples to work 
+there is need to include (add) the additional header files from the directory “help and additional header files”. This additional 
+header files contain CPU Boolean and S-box function used for comparison and checking the obtained results from GPU functions.
 
 For more read: About BoolSPLG - "docs" directory
