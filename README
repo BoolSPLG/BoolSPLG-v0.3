@@ -16,9 +16,11 @@ Clone a repository from GitHub to your local computer. Cloning the BoolSPLG-v0.3
 
 $cd "directory"
 $ git clone
-https://github.com/BoolSPLG/BoolSPLG-v0.3-CUDA-Library
+https://github.com/BoolSPLG/BoolSPLG-v0.3
 ...
 $
+
+The newly created BoolSPLG-v0.3 directory in your HOME is the place where is install the BoolSPLG library resources.
 
 You need to install (copy) only “BoolSPLG” directory from the main BoolSPLG-vx.x directory. We suggest installing BoolSPLG to the CUDA include directory,
 which is usually:
