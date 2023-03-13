@@ -20,8 +20,8 @@ $
 
 The newly created BoolSPLG-v0.3 folder in your HOME is the place where is install the BoolSPLG library resources.
 
-You need to install (copy) only “BoolSPLG” directory from the main BoolSPLG-vx.x directory. We suggest installing BoolSPLG to the CUDA include directory,
-which is usually:
+You need to install (copy) only “BoolSPLG” directory from the main BoolSPLG-vx.x directory. We suggest installing BoolSPLG to the CUDA
+include directory, which is usually:
 	- /usr/include/ on a Linux (Ubuntu);
 	- C:\CUDA\include\ on a Windows system. 
 	
