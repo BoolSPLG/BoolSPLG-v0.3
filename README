@@ -11,8 +11,7 @@ How do I get started using BoolSPLG?
 
 BoolSPLG is implemented as a C++ header library. There is no need to “build” BoolSPLG separately. To use BoolSPLG primitives in your code, simply:
 
-1. "Download and unzip the latest BoolSPLG distribution from the Downloads section and extract the contents of the zip file to a directory." 
-Clone a repository from GitHub to your local computer. Cloning the BoolSPLG-v0.3 library resource folder:
+1. Clone a repository from GitHub to your local computer. Cloning the BoolSPLG-v0.3 library resource folder:
 
 $cd "directory"
 $ git clone
@@ -20,7 +19,7 @@ https://github.com/BoolSPLG/BoolSPLG-v0.3
 ...
 $
 
-The newly created BoolSPLG-v0.3 directory in your HOME is the place where is install the BoolSPLG library resources.
+The newly created BoolSPLG-v0.3 folder in your HOME is the place where is install the BoolSPLG library resources.
 
 You need to install (copy) only “BoolSPLG” directory from the main BoolSPLG-vx.x directory. We suggest installing BoolSPLG to the CUDA include directory,
 which is usually:
