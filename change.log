@@ -1,0 +1,154 @@
+BoolSPLG v0.3 new features and bug-fixes:
+
+Except for the existing functions and procedures are added additional and better versions.
+
+1.  Included additional host functions.
+2.  Included additional device functions.
+3.  Included additional procedures.
+
+Included host functions:
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Function:CPU set 32 binary input in integer data type variable(s)
+void BinVecToDec32(int size, int* Bin_Vec, unsigned int* NumIntVec, int NumInt); //v0.3
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Function: Set GRID
+inline void setgrid_BinVecToDec(int size, int NumInt); //v0.3
+inline void setgrid_fmt_ad(int sizeSbox, int NumInt, int NumOfBits); //v0.3
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Declaration, Host Boolean functions
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void FastWalshTrans(int size, int* BoolSbox, int* walshvec);
+void FastWalshTransInv(int size, int* walshvec);
+void FastMobiushTrans(int size, int* TT, int* ANF);
+
+int FindMaxDeg(int size, int* ANF_CPU);
+void CPU_FMT_bitwise(unsigned long long int* NumIntVec, unsigned long long int* NumIntVecANF, int NumInt);
+
+int DecVecToBin_maxDeg(int NumOfBits, unsigned long long int* NumIntVec, int NumInt);
+
+int reduceCPU_AC(int nvals, int* AC);
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Declaration of Host S-box functions
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void SetSTT(int* sbox, int** STT, int* binary_num, int sizeSbox, int binary);
+void SetS_ANF(int* sbox, int* SboxElemet_ANF, int sizeSbox, int binary);
+
+int DDT_vector(int sizeSbox, int* sbox, int dx);
+
+int AlgDegMax(int sizeSbox, int* ANF_CPU);
+int AlgDegMin(int sizeSbox, int* ANF_CPU);
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Declaration, Host additional support functions
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+int ipow(int base, int exp);
+void fun_pow2(int size, int* vec);
+
+int reduceCPU_max(int* vals, int nvals);
+
+void HistogramSpectrum(int size, int* HistohramVector, int* InputVector, string NameSpectrum);
+
+//Allocate 2D Dynamic Array
+template <typename T>
+T** AllocateDynamicArray(int nRows, int nCols);
+
+//Delete 2D Dynamic Array 
+template <typename T>
+void FreeDynamicArray(T** dArray);
+
+void Fill_dp_vector(int n, int* vector, int* vecPTT);
+
+void binary1(int number, int* binary_num, int binary);
+
+void check_rez(int size, int* vector1, int* vector2);
+void check_rez_int(int size, unsigned long long int* vector1, unsigned long long int* vector2);
+template <class T>
+void check_rez03(int size, T* vector1, int* vector2);
+
+void Print_Result(int size, int* result);
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Included device functions (version 0.3):
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Device functions:
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//GPU Fast Walsh Transform
+template <class T>
+__global__ void fwt_kernel_shfl_xor_SM_v03(int* VectorValue, T* VectorValueRez, int step); //v0.3
+template <class T>
+__global__ void fwt_kernel_shfl_xor_SM_MP_v03(T* VectorValue, int fsize, int fsize1); //v0.3
+
+//GPU Bitwise Fast Mobius Transform
+template <class T>
+__global__ void fmt_kernel_shfl_xor_SM_v03(int* VectorValue, T* VectorRez, int sizefor); //v0.3
+template <class T>
+__global__ void fmt_kernel_shfl_xor_SM_MP_v03(T* VectorValue, int fsize, int fsize1); //v0.3
+
+//GPU Inverse Fast Walsh Transform
+template <class T>
+__global__ void ifmt_kernel_shfl_xor_SM_v03(T* VectorValue, T* VectorValueRez, int step); //v0.3
+template <class T>
+__global__ void ifmt_kernel_shfl_xor_SM_MP_v03(T* VectorValue, int fsize, int fsize1); //v0.3
+
+//GPU Min-Max Butterfly
+template <class T>
+__global__ void Butterfly_max_min_kernel_shfl_xor_SM_v03(T* VectorValue, T* VectorValueRez, int step); //v0.3
+template <class T>
+__global__ void Butterfly_max_min_kernel_shfl_xor_SM_MP_v03(T* VectorValue, int fsize, int fsize1); //v0.3
+
+//GPU Linear Approximation Table
+extern __global__ void fwt_kernel_shfl_xor_SM_LAT(int* VectorValue, int* VectorValueRez, int step); //v0.3
+
+//GPU Difference Distribution Table
+extern __global__ void DDTFnAll_kernel_expand(int* Sbox_in, int* DDT_out, int size); //v0.3
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+BoolSPLG basis device functions:
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Declaration for Boolean function
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+template <class T>
+int WalshSpecTranBoolGPU_ButterflyMax_v03(int* device_Vect, T* device_Vect_rez, T* device_Vect_Max, int size, bool returnMaxReduction); //v0.3 BoolFWT_compute
+template <class T>
+void MobiusTranBoolGPU_v03(int* device_Vect, T* device_Vect_rez, int size); //0.3 BoolFMT_compute
+template <class T>
+int AlgebraicDegreeBoolGPU_ButterflyMax_v03(int* device_Vect, T* device_Vect_rez, int size); //v0.3 BoolAD_compute
+template <class T>
+int AutocorrelationTranBoolGPU_ButterflyMax_v03(int* device_Vect, T* device_Vect_rez, T* device_Vect_Max, int size, bool returnMaxReduction); //v0.3 BoolAC_compute
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Declaration for S-box function
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+int WalshSpecTranSboxGPU_ButterflyMax_v03(int* device_Sbox, int* device_CF, int* device_WST, int sizeSbox, bool returnMax); //v0.3
+
+//Declaration Linear Approximation Table function
+void LATSboxGPU_v03(int* device_Sbox, int* device_CF, int* device_LAT, int sizeSbox); //v0.3
+
+//Declaration Difference Distribution Table function
+int DDTSboxGPU_ButterflyMax_v03(int* device_Sbox, int* device_DDT, int sizeSbox, bool returnMax); //v0.3
+int DDTSboxGPU_ButterflyMax_v03_expand(int* device_Sbox, int* device_DDT, int sizeSbox, bool returnMax); //v0.3
+
+//Declaration Algebraic Degree Table S-box functions
+int AlgebraicDegreeSboxGPU_ButterflyMin(int* device_Sbox, int* device_CF, int* device_ANF, int sizeSbox); //v0.3
+int AlgebraicDegreeSboxGPU_in_ANF_ButterflyMax(int* device_Sbox_ANF, int* device_CF, int sizeSbox); //v0.3
+int AlgebraicDegreeSboxGPU_in_ANF_ButterflyMin(int* device_Sbox_ANF, int* device_CF, int sizeSbox); //v0.3
+
+//Declaration Algebraic Degree Table S-box functions
+void AlgebraicDegreeTableSboxGPU(int* device_Sbox, int* device_CF, int* device_ADT, int sizeSbox); //v0.3
+
+//Declaration Bitwise Algebraic Degree S-box functions
+int BitwiseAlgebraicDegreeSboxGPU_ANF_in_ButterflyMax_v03(unsigned long long int* device_NumIntVecCF, int* device_Vec_max_values, int* device_Sbox_ANF, int* device_CF, int sizeSbox); //v0.3
+int BitwiseAlgebraicDegreeSboxGPU_ANF_in_ButterflyMin_v03(unsigned long long int* device_NumIntVecCF, int* device_Vec_max_values, int* device_Sbox_ANF, int* device_CF, int sizeSbox); //v0.3
+
+int BitwiseAlgebraicDegreeSboxGPU_ButterflyMax_v03(unsigned long long int* device_NumIntVecCF, unsigned longlong int* device_NumIntVecANF, int* device_Vec_max_values, int* device_Sbox, int* device_CF, int sizeSbox);//v0.3
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Declaration for Sum, Max and Min Reduction function
+int runReduction(int size, int* d_idata); //v0.3
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Grid configuration function
+inline void setgrid_BinVecToDec(int size, int NumInt); //v0.3
+inline void setgrid_fmt_ad(int sizeSbox, int NumInt, int NumOfBits); //v0.3
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
