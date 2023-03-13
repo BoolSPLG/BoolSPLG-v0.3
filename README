@@ -14,8 +14,7 @@ BoolSPLG is implemented as a C++ header library. There is no need to “build”
 1. Clone a repository from GitHub to your local computer. Cloning the BoolSPLG-v0.3 library resource folder:
 
 $cd "directory"
-$ git clone
-https://github.com/BoolSPLG/BoolSPLG-v0.3
+$ git clone https://github.com/BoolSPLG/BoolSPLG-v0.3
 ...
 $
 
