@@ -1,7 +1,7 @@
 #Cmake build script
 
 #Require a minimum version of cmake.
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.26)
 
 #Set the name of the project. Optional, languages C, CXX (i.e. C++), CUDA.
 project(BoolSPLG-v0.3 LANGUAGES CUDA CXX)
